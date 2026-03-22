@@ -30,7 +30,7 @@ snipx is an attempt to close that gap. v1 is a knowledge manager and retrieval t
 |------|---------|
 | [`snipx-sh/snipx.sh`](https://github.com/snipx-sh/snipx.sh) | Core — Tauri desktop app, HTTP API, Nushell module, dev scripts |
 | [`snipx-sh/snipx.dev`](https://github.com/snipx-sh/snipx.dev) | Web app — the hosted interface, deployed on Cloudflare |
-| [`snipx-sh/snipx`](https://github.com/snipx-sh/snipx) | Official content registry — curated packages for tools and frameworks |
+| [`snipx-sh/snipx`](https://github.com/snipx-sh/snipx) | Official knowledge base — community-maintained knowledge for tools and frameworks |
 
 Personal content repos follow the convention `github.com/[user]/snipx` and are served automatically at `https://snipx.dev/[username]`.
 
@@ -42,7 +42,7 @@ Personal content repos follow the convention `github.com/[user]/snipx` and are s
 
 A three-pane interface — sidebar, list, detail — for managing code snippets, documentation references, and bookmarks. Tokyo Night color system. Keyboard-driven. No cloud, no account, no subscription required to use the local app.
 
-Everything is stored in a single SQLite file at `~/.snipx/data/snipx.db`. Portable, backupable, exportable.
+Everything is stored in a single SQLite file at `~/.local/share/snipx/snipx.db`. Portable, backupable, exportable.
 
 ### HTTP API
 
@@ -78,14 +78,14 @@ The convention assumes `[user]/snipx` as the public repo name, but authenticated
 
 ---
 
-## The Package System
+## The Knowledge System
 
-snipx packages are the unit of contribution. A package is a directory for a specific tool, language, or framework — `bun`, `dagger`, `cloudflare`, `nushell`, `neovim` — that simultaneously satisfies multiple contracts so it works across different contexts without duplication.
+A knowledge entry — `bun`, `cloudflare/containers`, `dagger` — is a directory that simultaneously satisfies multiple contracts so it works across different contexts without duplication.
 
-### Package Structure
+### The Structure
 
 ```
-packages/[tool]/
+[tool]/
 │
 │   # Claude Code skill (agentskills.io open standard)
 ├── SKILL.md                  # frontmatter + instructions
@@ -124,7 +124,7 @@ No Python. Scripts are TypeScript (Bun) for anything needing HTTP or parsing, Nu
 
 ### Contribution Tiers
 
-Packages can be contributed at any level of completeness:
+Knowledge entries can be contributed at any level of completeness:
 
 | Tier | What's included | What you get |
 |------|----------------|--------------|
@@ -134,9 +134,9 @@ Packages can be contributed at any level of completeness:
 
 `snipx add <tool>` checks which tier is available and activates accordingly.
 
-### The Registry Manifest
+### The Manifest
 
-`snipx.nuon` is what distinguishes a snipx registry entry from a bare skills repo:
+`snipx.nuon` is what tells snipx what an entry provides:
 
 ```nuon
 {
@@ -158,7 +158,7 @@ Packages can be contributed at any level of completeness:
 
 ---
 
-## Skill Installation
+## Adding Knowledge
 
 Skills follow XDG + find-up resolution. When installing, snipx walks up from the current directory looking for a git root, then decides where to place the skill based on context. Both agent conventions are supported simultaneously via symlinks.
 
@@ -175,9 +175,11 @@ Skills follow XDG + find-up resolution. When installing, snipx walks up from the
 The skill directory at any of these locations is always thin — `SKILL.md` plus symlinks back to `~/.snipx/packages/[tool]/`. Content lives in exactly one place.
 
 ```
-# Installing:
-snipx skills add dagger
-bunx snipx@latest skills add dagger
+# Adding knowledge:
+snipx add dagger
+snipx add cloudflare/containers
+snipx add danielbodnar/neovim
+bunx snipx@latest add dagger
 bunx skills add snipx-sh/snipx --skill dagger -a claude-code -y
 ```
 
@@ -189,7 +191,7 @@ bunx skills add snipx-sh/snipx --skill dagger -a claude-code -y
 ~/.snipx/                         # SNIPX_HOME
   packages/                       # installed package content
   skills/                         # user-level skill dirs (thin + symlinked)
-  data/                           # primary app state in snipx.db (SQLite) plus vector index + cache files
+  data/                           # snipx.db, vector index, cache
 
 ~/.config/snipx/                  # SNIPX_CONFIG_DIR
   config.toml                     # SNIPX_CONFIG_FILE
@@ -264,6 +266,8 @@ A level 5 pass means it is genuinely second nature. That is the threshold the sy
 
 ## Contributing
 
-Packages live in [`snipx-sh/snipx`](https://github.com/snipx-sh/snipx). Any tier of contribution is welcome — a well-curated `references/` and a good `SKILL.md` is already useful. A full tier-3 package with tutorials and speed runs is the goal.
+Knowledge entries live in [`snipx-sh/snipx`](https://github.com/snipx-sh/snipx) — or in your own `github.com/[user]/snipx`. Any tier of contribution is welcome. A well-curated `references/` and a good `SKILL.md` is already useful. A full tier-3 entry with tutorials and speed runs is the goal.
 
-Personal content repos at `github.com/[user]/snipx` are served automatically at `snipx.dev/[username]` with no account or setup required.
+---
+
+*snipx.sh · snipx.dev · MIT*
