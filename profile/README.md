@@ -189,7 +189,7 @@ bunx skills add snipx-sh/snipx --skill dagger -a claude-code -y
 ~/.snipx/                         # SNIPX_HOME
   packages/                       # installed package content
   skills/                         # user-level skill dirs (thin + symlinked)
-  data/                           # snipx.db, vector index, cache
+  data/                           # primary app state in snipx.db (SQLite) plus vector index + cache files
 
 ~/.config/snipx/                  # SNIPX_CONFIG_DIR
   config.toml                     # SNIPX_CONFIG_FILE
