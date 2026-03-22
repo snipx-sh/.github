@@ -42,7 +42,7 @@ Personal content repos follow the convention `github.com/[user]/snipx` and are s
 
 A three-pane interface — sidebar, list, detail — for managing code snippets, documentation references, and bookmarks. Tokyo Night color system. Keyboard-driven. No cloud, no account, no subscription required to use the local app.
 
-Everything is stored in a single SQLite file at `~/.local/share/snipx/snipx.db`. Portable, backupable, exportable.
+Everything is stored in a single SQLite file at `~/.snipx/data/snipx.db`. Portable, backupable, exportable.
 
 ### HTTP API
 
