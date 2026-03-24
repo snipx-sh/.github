@@ -1,8 +1,8 @@
 # SnipX
 
-**effortlessly discover, collect, use, learn, memorize, internalize, and turn any knowledge into muscle memory. Then speed run challenges designed to train you to be the fastest expert at anything.**
+**Effortlessly discover, collect, use, learn, memorize, internalize, and turn any knowledge into muscle memory. Then speed-run challenges designed to train you to be the fastest expert at anything.**
 
-SnipX is a knowledge collection, curation, exploration, sharing, and management platform designed to take anyone from awareness of something's existence all the way to muscle memory that doesn't require referencing docs and syntax to speed run competitions, all naturally, fluently, and intuitively without the traditionally difficult burden of learning something new.
+SnipX is a knowledge collection, curation, exploration, sharing, and management platform designed to take anyone from awareness of something's existence all the way to muscle memory that doesn't require referencing docs and syntax to speed-run competitions, all naturally, fluently, and intuitively without the traditionally difficult burden of learning something new.
 
 **snipx.sh · snipx.dev**
 
